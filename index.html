@@ -71,10 +71,37 @@
 
                     
                     document.body.innerHTML = "Result: " + String(result) + "/14 (" + String(Math.round(result*100/14) + "%)");
+                    document.body.innerHTML += "<br><input type=\"button\" onclick=\"clickReset()\" value=\"Reset\">";
                 }
                 catch {
                     return;
                 }
+            }
+
+            function clickReset() {
+                document.body.innerHTML = "";
+                document.body.innerHTML += `
+                    <p>Кто самый умный?</p>
+                    <input type="checkbox" id="a1" name="q1">
+                    <label for="a1">Я</label><br>
+                    <input type="checkbox" id="a2" name="q1">
+                    <label for="a2">Не я</label><br>
+                    <input type="checkbox" id="a3" name="q1">
+                    <label for="a3">Никто</label><br>
+                    <input type="checkbox" id="a4" name="q1">
+                    <label for="a4">Весь мир</label><br>
+                    <input type="checkbox" id="a5" name="q1">
+                    <label for="a5">Твой дебилизм)</label><br>
+
+                    <p>Кто ты?</p>
+                    <input type="radio" id="a1" name="q2">
+                    <label for="a1">Я БОГ</label><br>
+                    <input type="radio" id="a2" name="q2">
+                    <label for="a2">Я человек</label>
+                    <p>Кто был Человеком-Пауком?</p>
+                    <input type="text" name="q3"><br>
+                    <br>
+                    <input type="button" onclick="clickBtn()" value="Submit">`;
             }
         </script>
     </div>
