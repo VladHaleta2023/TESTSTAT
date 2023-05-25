@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TESTSTAT</title>
+</head>
+<body>
+    <div>
+        <p>Кто самый умный?</p>
+        <input type="checkbox" id="a1" name="q1">
+        <label for="a1">Я</label><br>
+        <input type="checkbox" id="a2" name="q1">
+        <label for="a2">Не я</label><br>
+        <input type="checkbox" id="a3" name="q1">
+        <label for="a3">Никто</label><br>
+        <input type="checkbox" id="a4" name="q1">
+        <label for="a4">Весь мир</label><br>
+        <input type="checkbox" id="a5" name="q1">
+        <label for="a5">Твой дебилизм)</label><br>
+
+        <p>Кто ты?</p>
+        <input type="radio" id="a1" name="q2">
+        <label for="a1">Я БОГ</label><br>
+        <input type="radio" id="a2" name="q2">
+        <label for="a2">Я человек</label>
+        <p>Кто был Человеком-Пауком?</p>
+        <input type="text" name="q3"><br>
+        <br>
+        <input type="button" onclick="clickBtn()" value="Submit">
+
+        <script>
+            function clickBtn() {
+                try {
+                    var points = [0, 0, 0];
+                    var k = 0;
+                    var answersQ1 = document.getElementsByName('q1');
+                    var answersQ2 = document.getElementsByName('q2');
+                    var answersQ3 = document.getElementsByName('q3');
+
+                    for (let i = 0; i < answersQ1.length; i++) {
+                        if (answersQ1[i].checked) {
+                            if (i == 1 || i == 2 || i == 4)
+                                points[k] += 2;
+                            else
+                                points[k] -= 2.5;
+                        }
+                    }
+                    k++;
+
+                    for (let i = 0; i < answersQ2.length; i++) {
+                        if (answersQ2[i].checked) {
+                            if (i == 1)
+                                points[k] += 3;
+                            else
+                                points[k] -= 3;
+                        }
+                    }
+                    k++;
+
+                    if (answersQ3[0].value == "Питер Паркер" || answersQ3[0].value == "Паркер")
+                        points[k] += 5;
+                    else
+                        points[k] -= 5;
+
+                    var result = 0;
+                    for (let i = 0; i < points.length; i++)
+                        if (points[i] >= 0)
+                            result += points[i];
+
+                    
+                    document.body.innerHTML = "Result: " + String(result) + "/14 (" + String(Math.round(result*100/14) + "%)");
+                }
+                catch {
+                    return;
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>
